@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // WAP to check whether number have 3 digit or not
+        // 100 999 / -100 -999
+        let num = Number(prompt("Enter a number: "));
+
+        if (num >= 100 && num <= 999 || num <= -100 && num >= -999) {
+            alert(`Number ${num} contains 3 digit`);
+        } else {
+            alert(`Number ${num} doesn't contains 3 digit`);
+        }
+
+
+
+        // string -> OBJECT property / method() -> dot .
+        /*let numLength = num.length
+        if (numLength == 3) {
+            alert(`Number ${num} contains 3 digit`);
+        } else {
+            alert(`Number ${num} doesn't contains 3 digit`);
+
+        }
+        Since length works fine with +ve number but with -ve it counts -sign as character    
+        */
+    </script>
+</body>
+
+</html>

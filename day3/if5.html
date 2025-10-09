@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Marks of 5 subject, Display sum and average</h1>
+    <p><strong>Based on average display grades</strong></p>
+    <ol>
+        <li>avg is between 90 to 100 -> <strong>A Grade</strong></li>
+        <li>avg is between 70 to 89 -> <strong>B Grade</strong></li>
+        <li>avg is between 50 to 69 -> <strong>C Grade</strong></li>
+        <li>avg is between 35 to 49 -> <strong>D Grade</strong></li>
+        <li>Below 35 -> <strong>FAIL</strong></li>
+    </ol>
+
+    <script>
+        let mark1 = Number(prompt("Enter marks of subject 1: "));
+        let mark2 = Number(prompt("Enter marks of subject 2: "));
+        let mark3 = Number(prompt("Enter marks of subject 3: "));
+        let mark4 = Number(prompt("Enter marks of subject 4: "));
+        let mark5 = Number(prompt("Enter marks of subject 5: "));
+
+        let sum = mark1 + mark2 + mark3 + mark4 + mark5;
+        console.log("Sum of marks = ", sum);
+        alert(`Sum of marks = ${sum}`);
+        if (mark1 >= 35 && mark2 >= 35 && mark3 >= 35 && mark4 >= 35 && mark5 >= 35) {
+            let avg = sum / 5;
+            console.log("Average marks = ", avg);
+            // SHow grades
+            if (avg >= 90) {
+                alert("A Grade");
+            } else if (avg >= 70) {
+
+                alert("B Grade");
+            } else if (avg >= 50) {
+
+                alert("C Grade");
+            } else if (avg >= 35) {
+
+                alert("D Grade");
+            }
+        } else {
+
+            alert("FAIL -> You failed in one or more subjects\n Reappear in next sem");
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- WAP to check whether the last digit of 2 numbers are same or not -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let num1 = Number(prompt("Enter number 1: "))
+        let num2 = Number(prompt("Enter number 2: "))
+
+        let ldNum1 = num1 % 10;
+        let ldNum2 = num2 % 10;
+        if (ldNum1 == ldNum2) {
+            let message = `Num1 = ${num1}, Num2 = ${num2} have last digit = ${ldNum1} is same for both numbers`;
+            console.log(message);
+            alert(message);
+        } else {
+            let message = `Num1 = ${num1}, Num2 = ${num2} have last digit 1 = ${ldNum1}, last digit 2 = ${ldNum2} is not same for both numbers`;
+            console.log(message);
+            alert(message);
+
+        }
+    </script>
+</body>
+
+</html>
