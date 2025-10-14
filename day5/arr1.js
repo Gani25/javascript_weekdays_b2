@@ -32,11 +32,3 @@ console.log("After unshift new length is: =", arr.unshift("SPRK", "TECH"));
 console.log("After unshift: ", arr);
 console.log("Shift Method -> ", arr.shift());
 console.log("After shift: ", arr);
-
-// TASK
-/*
-1. Array ->
-["Java","BEST","Is","Language"]
-Change to below solution
-["BEST","Language","Is","Java"]
-*/
