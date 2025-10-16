@@ -16,11 +16,50 @@
 
         let n = prompt("Enter a number: ");
         let reverse = 0;
+        let i = n;
+        let lastDigit;
+        while (i != 0) {
+            lastDigit = i % 10;
+            reverse = reverse * 10 + lastDigit;
+            i = Math.floor(i / 10);
+        }
 
+        if (n == reverse) {
+            alert(`Number ${n} is a Palindrome Number`);
+        } else {
+            alert(`Number ${n} is not a Palindrome Number, Reverse = ${reverse}`);
 
-
-
+        }
     </script>
 </body>
 
 </html>
+<!-- 
+1. WAP to check whether the number is Armstrong Number or Not
+An Armstrong number, also known as a Narcissistic number, is a positive integer that is equal to the sum of its own digits, each raised to the power of the number of digits in the number. [1, 2, 3, 4, 5, 6]  
+Example: 
+Consider the number 153: 
+
+• Count the number of digits: 153 has 3 digits. 
+• Raise each digit to the power of the number of digits: [1, 2, 3, 4, 5, 7]  
+	• $1^3 = 1$ 
+	• $5^3 = 125$ 
+	• $3^3 = 27$ 
+
+• Sum the results: $1 + 125 + 27 = 153$ 
+• Compare the sum to the original number: Since the sum (153) is equal to the original number (153), 153 is an Armstrong number. 
+
+Another Example: 
+Consider the number 1634: 
+
+• Count the number of digits: 1634 has 4 digits. 
+• Raise each digit to the power of the number of digits: [1, 2, 3, 4, 5, 7]  
+	• $1^4 = 1$ 
+	• $6^4 = 1296$ 
+	• $3^4 = 81$ 
+	• $4^4 = 256$ 
+
+• Sum the results: $1 + 1296 + 81 + 256 = 1634$ 
+• Compare the sum to the original number: Since the sum (1634) is equal to the original number (1634), 1634 is an Armstrong number. 
+
+-->
