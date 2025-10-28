@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Color</title>
+</head>
+
+<body>
+    <h1>Guess Game</h1>
+
+    <script>
+        // prompt -> Color -> Correct -> Alert
+        // Color -> Please try again or type quit
+
+        const favColor = "BLUE";
+        let guessColor;
+
+        do {
+            guessColor = prompt("Guess My Fav Color or Type 'QUIT' to exit: ").toUpperCase();
+            // 1st condition -> guess === favcolor -> alert
+            if (guessColor === favColor) {
+                alert(`Your guess is correct, My favourite color is ${favColor}`);
+                break;
+            }
+            else if (guessColor === "QUIT") {
+                alert("Thanks for using or guessing game...")
+            }
+            else {
+                alert("Please try again!!!!");
+            }
+        } while (guessColor != "QUIT");
+    </script>
+
+</body>
+
+</html>
