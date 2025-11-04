@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Prime</title>
+</head>
+
+<body>
+
+    <script>
+        // No return type and no parameter
+        function checkPrime() {
+
+            let number = prompt("Enter a number: ");
+            let factors = [];
+            let count = 0;
+
+            for (let i = 1; i <= number; i++) {
+                if (number % i == 0) {
+                    // i -> is factor for number
+                    factors.push(i);
+                    // count increase
+                    count++;
+                }
+            }
+            if (count == 2) {
+                console.log(`Number = ${number} is a prime number`);
+                console.log(`Factors = ${factors}`);
+            } else {
+
+                console.log(`Number = ${number} is not a prime number`);
+                console.log(`Factors = ${factors}`);
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
