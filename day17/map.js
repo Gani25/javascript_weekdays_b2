@@ -5,7 +5,7 @@ let arr = [5, 1, 7, 9, 3];
 // Square of each elements
 
 let squareArr = arr.map((element) => {
-  return element ** 2;
+  return element ** 3;
 });
 
 console.log(arr);
