@@ -20,9 +20,7 @@ let posEven = numbers.filter((element) => {
 console.log(posEven);
 // Filter all elements which are positive and even
 
-let posOdd = numbers.filter((element) => {
-  return element > 0 && element % 2 != 0;
-});
+let posOdd = numbers.filter((element) => element > 0 && element % 2 != 0);
 
 console.log(posOdd);
 
