@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#mainImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+#newImage {
+  width: 800px;
+  height: 500px;
+  object-fit: cover;
+}
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.heading-style {
+  color: red;
+  font-size: 50px;
+  text-transform: uppercase;
+}
