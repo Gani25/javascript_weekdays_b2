@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigating On Page</title>
+
+    <style>
+        .box {
+            width: 60%;
+            height: 300px;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Navigating On
+            <span style="text-decoration: underline; background-color: aqua;">PAGE</span>
+        </h1>
+
+    </div>
+
+    <script>
+        let heading = document.querySelector("h1")
+
+
+        console.log(heading);
+        console.log(heading.children);
+        heading.children[0].style.backgroundColor = "purple";
+        heading.children[0].style.color = "skyblue";
+
+        console.log(heading.parentElement);
+        heading.parentElement.style.borderStyle = "dotted";
+
+
+    </script>
+
+
+</body>
+
+</html>
