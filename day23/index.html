@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Modifications With JS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+            background-color: grey;
+        }
+
+        .heading {
+            background-color: rgb(233, 174, 214);
+            color: rgb(0, 48, 16);
+        }
+
+        .size {
+            width: 50%;
+            padding: 2rem;
+            font-size: 4rem;
+            /*40px*/
+            /*With respect to Root element Size (html)*/
+        }
+
+        .important {
+            text-decoration: underline solid rgb(47, 227, 255);
+        }
+
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            width: 60px;
+            height: 30px;
+            display: flex;
+            --c: #0000 calc(100% - 5px), #000 calc(100% - 4px) 96%, #0000;
+            background:
+                radial-gradient(farthest-side at bottom, var(--c)) 0 0,
+                radial-gradient(farthest-side at top, var(--c)) 100% 100%;
+            background-size: calc(50% + 2px) 50%;
+            background-repeat: no-repeat;
+            animation: l13 2s infinite linear;
+        }
+
+        .loader:before {
+            content: "";
+            flex: 1;
+            background: inherit;
+            transform: rotate(90deg);
+        }
+
+        @keyframes l13 {
+            100% {
+                transform: rotate(1turn)
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading size" id="main-heading">Welcome To SPRK TECHNOLOGIES</h1>
+
+    <div class="loader hide"></div>
+
+    <script>
+
+        const mainHeading = document.querySelector("#main-heading");
+
+        const loader = document.querySelector(".loader");
+
+        console.dir(mainHeading)
+        console.dir(mainHeading.getAttribute("class"))
+        console.log(mainHeading.classList);
+
+        // add/append new class which is class .important through js
+
+        mainHeading.classList.add("important")
+        console.log(mainHeading.classList);
+
+        mainHeading.classList.remove("size")
+        console.log(mainHeading.classList);
+
+        // if class is present -> then it will remove that class
+        // if class is absent -> then it will add that class
+        mainHeading.classList.toggle("size")
+        console.log(mainHeading.classList);
+        loader.classList.remove("hide");
+
+        setTimeout(() => {
+            mainHeading.classList.toggle("size")
+            console.log(mainHeading.classList);
+
+            loader.classList.add("hide");
+
+
+        }, 3000)
+
+        console.log(mainHeading.classList.contains("important"));
+        console.log(mainHeading.classList.contains("sprk"));
+
+
+    </script>
+</body>
+
+</html>
