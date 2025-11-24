@@ -1,0 +1,39 @@
+<!-- Creating html content through JS -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic content</title>
+    <style>
+        .main {
+            color: green;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+
+
+    <script>
+
+        let para = document.createElement("p")
+
+        para.textContent = "Hello I am para generate through JS";
+        para.classList.add("main")
+
+        let div = document.querySelector(".container");
+        div.appendChild(para)
+
+
+
+    </script>
+</body>
+
+</html>
