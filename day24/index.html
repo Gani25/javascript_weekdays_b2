@@ -29,7 +29,17 @@
         para.classList.add("main")
 
         let div = document.querySelector(".container");
-        div.appendChild(para)
+
+        let btn = document.createElement("button");
+        btn.innerText = "Click Me";
+
+        para.appendChild(btn);
+        console.log(para);
+        para.append("Hello from append")
+
+        para.prepend(btn);
+        console.log(para);
+        div.append(para)
 
 
 
