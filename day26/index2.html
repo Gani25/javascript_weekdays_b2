@@ -17,12 +17,26 @@
         let input = document.querySelector("input");
 
         input.addEventListener("keydown", function (e) {
+            // console.log(e);
             let data = e.key;
-            if (data >= 0 && data <= 9) {
-                input.value = `${input.value}`;
-            }
+            if (data >= 0 && data <= 9 || data == "Backspace" || data == "Delete" || data == "ArrowLeft" || data == "ArrowRight") {
 
+                return;
+
+            }
+            e.preventDefault();
+        });
+
+        input.addEventListener("focus", function (e) {
+            console.log(e);
+            console.log("Input is focused");
         })
+        input.addEventListener("blur", function () {
+            console.log("Out of focus");
+        })
+
+
+
 
 
     </script>

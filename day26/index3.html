@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="/demo">
+        <input type="text" placeholder="Enter username" id="uname">
+        <br>
+        <br>
+        <input type="password" placeholder="Enter password" id="pw"> <span toggleBtn>👁️</span>
+        <br>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+    <script>
+
+        let form = document.querySelector("form");
+        let username = document.querySelector("#uname")
+        let password = document.querySelector("#pw")
+
+        let toggleButton = document.querySelector("[toggleBtn]")
+
+        toggleButton.addEventListener("click", function () {
+
+            // console.dir(password);
+            if (password.type == "password") {
+                password.type = "text";
+                toggleButton.textContent = "🫣";
+            } else {
+                password.type = "password";
+                toggleButton.textContent = "👁️";
+            }
+
+
+        })
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+
+            alert(`Saved successfully ${username.value} : ${password.value}`);
+
+            // clean form
+            username.value = "";
+            password.value = "";
+
+            // redirect to new page
+        });
+    </script>
+
+</body>
+
+</html>
