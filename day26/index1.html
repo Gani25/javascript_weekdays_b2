@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Event</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+
+    <input type="text">
+
+    <script>
+
+        let heading = document.querySelector("h1");
+
+        let body = document.querySelector("body");
+
+        body.addEventListener("keydown", function (event) {
+
+            console.log("Key event occur");
+            console.log(event);
+        })
+
+        heading.addEventListener("click", function (event) {
+            console.log(event);
+        })
+        let input = document.querySelector("input");
+
+        input.addEventListener("keydown", function (e) {
+            console.log(e);
+            console.log(e.key);
+            console.log(e.code);
+
+        })
+
+        input.addEventListener("keyup", function (e) {
+            console.log(e);
+        })
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Event</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+
+    <input type="text" placeholder="Enter numbers">
+
+    <script>
+
+        let input = document.querySelector("input");
+
+        input.addEventListener("keydown", function (e) {
+            let data = e.key;
+            if (data >= 0 && data <= 9) {
+                input.value = `${input.value}`;
+            }
+
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>
