@@ -48,7 +48,10 @@
         spans.forEach((theSpan) => {
             theSpan.addEventListener("click", (event) => {
                 event.stopPropagation();
-                alert("span of item was clicked");
+                // console.log(event);
+                let obj = event.target
+                console.log(obj);
+                alert(`span = ${obj.textContent} of item was clicked`);
             })
         })
     </script>

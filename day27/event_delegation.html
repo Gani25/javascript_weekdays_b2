@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+</head>
+
+<body>
+
+    <div class="btn-container">
+
+        <button class="btn">Button 1</button>
+        <button class="btn">Button 2</button>
+        <button class="btn">Button 3</button>
+
+    </div>
+
+    <script>
+
+        let allBtns = document.querySelectorAll(".btn");
+
+        allBtns.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                alert(`${event.target.textContent} was clicked`);
+            })
+        })
+
+        let newButton = document.createElement("button")
+        newButton.innerText = "New Button 4";
+        newButton.classList.add("btn");
+
+        console.log(newButton);
+        let btnContainer = document.querySelector(".btn-container");
+
+        btnContainer.appendChild(newButton);
+    </script>
+
+</body>
+
+</html>
