@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+</head>
+
+<body>
+
+    <div>
+        I am a div
+
+        <ul>
+            <li>
+                I have <span style="text-decoration: underline; font-weight: bold;">banana</span> in refrigerator
+            </li>
+            <li>
+                I have <span style="text-decoration: underline; font-weight: bold;">apple</span> in refrigerator
+            </li>
+            <li>
+                I have <span style="text-decoration: underline; font-weight: bold;">orange</span> in refrigerator
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let div = document.querySelector("div");
+        let ul = document.querySelector("ul");
+        let listItems = document.querySelectorAll("li");
+        let spans = document.querySelectorAll("span");
+
+        div.addEventListener("click", (event) => {
+            alert("div was clicked");
+        })
+        ul.addEventListener("click", (event) => {
+            event.stopPropagation();
+            alert("list was clicked");
+        })
+        listItems.forEach((item) => {
+            item.addEventListener("click", (event) => {
+                event.stopPropagation();
+                alert("Item was clicked");
+            })
+        }
+        );
+        spans.forEach((theSpan) => {
+            theSpan.addEventListener("click", (event) => {
+                event.stopPropagation();
+                alert("span of item was clicked");
+            })
+        })
+    </script>
+
+</body>
+
+</html>
