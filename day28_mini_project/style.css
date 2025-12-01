@@ -1,19 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --card-bg: #f4f4f4;
   --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: rgba(0, 0, 0, 0.647);
+}
+
+html {
+  font-size: 20px;
 }
 
 body.dark {
   --bg-color: #121212;
   --text-color: #ffffff;
   --card-bg: #1e1e1e;
-  --card-shadow: rgba(255, 255, 255, 0 was 1);
+  --card-shadow: rgba(255, 255, 255, 0.1);
+  --card-shadow-hover: rgba(255, 255, 255, 0.66);
 }
 
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
@@ -45,9 +55,9 @@ h1 {
   transition: all 0.5s, color 0.3s;
 }
 
-#toggleBtn:hover {
-  transform: rotate(-90deg);
-}
+/* #toggleBtn:hover {
+  transform: translateY(-2px);
+} */
 
 .sun,
 .moon {
@@ -66,20 +76,27 @@ h1 {
 
 .container {
   display: flex;
+  /* flex-direction: column; */
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
   padding: 2rem;
+  width: 80%;
+  margin-inline: auto;
 }
 
 .card {
   background: var(--card-bg);
   box-shadow: 0 2px 8px var(--card-shadow);
   border-radius: 10px;
-  width: 250px;
+  width: 300px;
   padding: 1.5rem;
+  cursor: pointer;
   text-align: center;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: all 0.3s;
+}
+.card:hover {
+  box-shadow: 0 2px 8px var(--card-shadow-hover);
 }
 
 .card h2 {
