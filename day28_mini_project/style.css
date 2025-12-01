@@ -1,0 +1,87 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f4f4f4;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --card-shadow: rgba(255, 255, 255, 0 was 1);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  box-shadow: 0 2px 5px var(--card-shadow);
+}
+
+h1 {
+  margin: 0;
+}
+
+/* Clean button with only icon */
+#toggleBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  font-size: 1.5rem;
+  padding: 10px;
+  color: var(--text-color);
+  transition: all 0.5s, color 0.3s;
+}
+
+#toggleBtn:hover {
+  transform: rotate(-90deg);
+}
+
+.sun,
+.moon {
+  transition: all 0.5s, color 0.3s;
+}
+
+.sun:hover {
+  color: #ff9800;
+  /* orange highlight on hover */
+}
+
+.moon:hover {
+  color: #0077ff;
+  /* orange highlight on hover */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  box-shadow: 0 2px 8px var(--card-shadow);
+  border-radius: 10px;
+  width: 250px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+  margin-top: 0;
+}
