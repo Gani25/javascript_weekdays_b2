@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JS Behaviour</title>
+</head>
+
+<body>
+
+    <h1>Hello I am heading</h1>
+
+    <script>
+
+        // every 2 second I want to change color of h1 3 times
+
+        let h1 = document.querySelector("h1");
+
+        let oldColor = h1.style.color
+
+        // transform change color fn to higher order function
+
+
+        function changeColor(color, delay, nextColorChangeFn) {
+            setTimeout(
+                () => {
+                    h1.style.color = color;
+                    console.log(`Timeout runs after ${delay}ms`);
+                    console.log(`Completed`);
+
+                    if (nextColorChangeFn) {
+                        nextColorChangeFn();
+                    } else {
+                        setTimeout(() => {
+                            h1.style.color = oldColor;
+
+                        }, 2000)
+                    }
+                }, delay);
+        }
+
+        changeColor("red", 2000, () => {
+            changeColor("blue", 2000, () => {
+                changeColor("orange", 2000, () => {
+                    changeColor("skyblue", 2000, () => {
+                        changeColor("purple", 2000, () => {
+                            changeColor("green", 2000)
+                        })
+                    })
+                });
+            })
+        });
+
+        /*
+        1. Nesting of functions calls is called as callback hell
+        2. TO handle callback hell JS have 2 options
+            a. Promises
+            b. async await
+        */
+    </script>
+
+</body>
+
+</html>

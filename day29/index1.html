@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JS Behaviour</title>
+</head>
+
+<body>
+
+    <h1>Hello I am heading</h1>
+
+    <script>
+
+        // every 2 second I want to change color of h1 3 times
+
+        let h1 = document.querySelector("h1");
+
+        let oldColor = h1.style.color
+        function changeColor(color, delay) {
+            setTimeout(
+                () => {
+                    h1.style.color = color;
+                    console.log(`Timeout runs after ${delay}ms`);
+                }, delay);
+        }
+
+        changeColor("red", 2000);
+        changeColor("blue", 4000);
+        changeColor("orange", 6000);
+        changeColor(oldColor, 8000);
+
+        /*setTimeout(() => {
+            h1.style.color = "red";
+            console.log("First timeout");
+        }, 2000);
+        setTimeout(() => {
+            h1.style.color = "blue";
+            console.log("Second timeout");
+        }, 4000);
+        setTimeout(() => {
+            h1.style.color = "orange";
+            console.log("Third timeout");
+        }, 6000);
+        setTimeout(() => {
+            h1.style.color = oldColor;
+            console.log("Final timeout");
+        }, 8000);*/
+
+    </script>
+
+</body>
+
+</html>
