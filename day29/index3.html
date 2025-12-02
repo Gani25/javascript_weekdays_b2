@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CallBack hell with 2 callback functions, success, failure</h1>
+
+    <script>
+
+        function saveToDb(data, successFn, failureFn) {
+            // Generate random number between 1 to 10
+            let internetSpeed = Math.floor(Math.random() * 10) + 1;
+
+            console.log(`Internet Speed = ${internetSpeed}`);
+            console.log(data);
+
+            if (internetSpeed > 4) {
+                successFn();
+            } else {
+                failureFn()
+            }
+        }
+
+        saveToDb("First Data", () => {
+            console.log("Success 1: First Data Saved Successfully");
+
+            saveToDb("Second Data", () => {
+                console.log("Success 2: Second Data Saved Successfully");
+
+                saveToDb("Third Data", () => {
+                    console.log("Success 3: Third Data Saved Successfully");
+
+
+                }, () => {
+
+                    console.log("Failed 3: Third Data Not Saved Successfully.. Stopping");
+
+                })
+
+            }, () => {
+                console.log("Failed 2: Second Data Not Saved Successfully.. Stopping");
+
+            });
+        }, () => {
+
+            console.log("Failed 1: First Data Not Saved Successfully.. Stopping");
+        })
+
+    </script>
+</body>
+
+</html>
