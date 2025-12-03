@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JS Behaviour async/await</title>
+
+    <style>
+        .error {
+            color: red;
+
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hello I am heading</h1>
+
+    <p class="hidden error"></p>
+
+    <script>
+
+
+        let h1 = document.querySelector("h1");
+
+        let oldColor = h1.style.color
+        function changeColor(color, delay) {
+
+            return new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        console.log(`Timeout runs after ${delay}ms`);
+                        if (color === "orange") {
+                            reject(`color = ${color} is rejected`)
+                        } else {
+                            h1.style.color = color;
+                            resolve(`color = ${color} changed successfully`);
+
+                        }
+                    }, delay);
+            })
+        }
+
+        const errorMessage = document.querySelector(".error");
+
+        async function colorChangeFn() {
+
+            errorMessage.classList.add("hidden")
+
+            try {
+                console.log(await changeColor("red", 3000));
+                console.log(await changeColor("blue", 3000));
+                console.log(await changeColor("orange", 3000));
+                console.log(await changeColor("purple", 3000));
+
+            } catch (error) {
+                console.log(error);
+                errorMessage.textContent = error;
+                errorMessage.classList.remove("hidden");
+            }
+        }
+
+
+        async function newColors() {
+            setTimeout(() => {
+
+                errorMessage.classList.add("hidden")
+
+            }, 2000);
+            try {
+                console.log(await changeColor("green", 3000));
+                console.log(await changeColor("skyblue", 3000));
+                console.log(await changeColor("aqua", 3000));
+
+            } catch (error) {
+                console.log(error);
+                errorMessage.textContent = error;
+                errorMessage.classList.remove("hidden");
+            }
+
+        }
+
+
+        (async function colors() {
+
+            await colorChangeFn();
+            await newColors();
+
+        })()
+
+    </script>
+
+</body>
+
+</html>

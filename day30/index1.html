@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JS Behaviour with Promises</title>
+</head>
+
+<body>
+
+    <h1>Hello I am heading</h1>
+
+    <script>
+
+
+        let h1 = document.querySelector("h1");
+
+        let oldColor = h1.style.color
+        function changeColor(color, delay) {
+
+            return new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        console.log(`Timeout runs after ${delay}ms`);
+                        if (color === "orange") {
+                            reject(`color = ${color} is rejected`)
+                        } else {
+                            h1.style.color = color;
+                            resolve(`color = ${color} changed successfully`);
+
+                        }
+                    }, delay);
+            })
+        }
+
+        let pr1 = changeColor("red", 3000);
+        console.log(pr1);
+        pr1
+            .then((result) => {
+                console.log(result);
+                let pr2 = changeColor("orange", 3000);
+                console.log(pr2);
+                return pr2;
+            })
+            .then((result) => {
+                console.log(result);
+                let pr3 = changeColor("blue", 3000);
+                console.log(pr3);
+                return pr3;
+            })
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+    </script>
+
+</body>
+
+</html>
