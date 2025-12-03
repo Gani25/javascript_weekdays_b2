@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to Javascript Object</title>
+</head>
+
+<body>
+
+    <script>
+
+        const student = {
+            "name": "Memon",
+            "age": "26",
+            "marks": [60, 80, 90, 10, 15],
+            "address": {
+                "city": "Navi Mumbai",
+                "state": "Kharghar"
+            }
+        }
+
+        console.log(student);
+        console.log(typeof (student));
+
+        // Convert obj to Str
+        const studentStr = JSON.stringify(student);
+        console.log(studentStr);
+        console.log(typeof (studentStr));
+    </script>
+
+</body>
+
+</html>

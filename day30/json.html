@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to Javascript Object</title>
+</head>
+
+<body>
+
+    <script>
+
+        let apiResponse = `{"fact":"A cat cannot see directly under its nose.","length":41}`;
+
+
+        console.log(apiResponse);
+        console.log(typeof apiResponse);
+
+        let apiObj = JSON.parse(apiResponse);
+        console.log(apiObj);
+        console.log(`Fact = ${apiObj.fact}`);
+        console.log(`Fact = ${apiObj["fact"]}`);
+        console.log(typeof apiObj);
+
+    </script>
+
+</body>
+
+</html>
