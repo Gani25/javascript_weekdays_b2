@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calling API through JS using async await</title>
+</head>
+
+<body>
+
+    <!-- 1. fetch -> Promise
+        Promise
+        a. .then().catch()
+        b. await  -- async
+    -->
+    <!-- 2. axios -> Data -->
+
+    <script>
+
+
+        async function getCatFacts() {
+            try {
+
+                let response = await fetch("https://catfact.ninja/fact");
+                console.log(response);
+                let apiData = await response.json();
+                console.log(apiData);
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        getCatFacts();
+    </script>
+
+</body>
+
+</html>

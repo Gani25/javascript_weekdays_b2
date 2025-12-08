@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calling API through JS</title>
+</head>
+
+<body>
+
+    <!-- 1. fetch -> Promise
+        Promise
+        a. .then().catch()
+        b. await  -- async
+    -->
+    <!-- 2. axios -> Data -->
+
+    <script>
+
+        let response = fetch("https://catfact.ninja/fact");
+        let apiResponse;
+        response
+            .then((result) => {
+                console.log(result);
+
+                return result.json()
+            })
+            .then(data => {
+                console.log(data);
+                apiResponse = data
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    </script>
+
+</body>
+
+</html>
