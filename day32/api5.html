@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        async function apiCall() {
+            try {
+                // let apiResponse = await fetch('https://reqres.in/api/users', {
+                let apiResponse = await fetch('https://reqres.in/api/users?page=1&per_page=20', {
+                    method: "POST",
+                    headers: {
+                        'x-api-key': 'reqres_8f25f39eb2bc477d8f435a305f84965b',
+                        'accept': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        first_name: "Rohan",
+                        last_name: "Pandey",
+                        email: "rohan12@gmail.com",
+                        avatar: "https://reqres.in/img/faces/2-image.jpg"
+                    })
+
+                })
+                    ;
+                let apiData = await apiResponse.json();
+
+                console.log(apiData);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        }
+        apiCall();
+    </script>
+</body>
+
+</html>

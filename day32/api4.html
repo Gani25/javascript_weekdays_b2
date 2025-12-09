@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        async function apiCall() {
+            try {
+                // let apiResponse = await fetch('https://reqres.in/api/users', {
+                let apiResponse = await fetch('https://reqres.in/api/users?page=1&per_page=20', {
+                    method: "GET",
+                    headers: {
+                        'x-api-key': 'reqres_8f25f39eb2bc477d8f435a305f84965b',
+                        'accept': 'application/json',
+                    },
+
+                })
+                    ;
+                let apiData = await apiResponse.json();
+
+                console.log(apiData);
+                console.log(apiData.data);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        }
+        apiCall();
+    </script>
+</body>
+
+</html>
