@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+
+        }
+
+        #wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 60%;
+            height: 400px;
+            background-color: rgb(199, 232, 232);
+            border-radius: 8rem;
+            /* margin-inline: auto; */
+        }
+
+        .header {
+            font-size: 6rem;
+            text-align: center;
+            margin-block: 2rem;
+        }
+
+        .fact-holder {
+            margin: 3rem auto;
+            width: 75%;
+            font-size: 2.5rem;
+            text-align: justify;
+
+        }
+
+        .btn {
+            border: none;
+            margin-top: 3rem;
+            font-size: 2rem;
+            padding: 2rem 9rem;
+            background-color: rgb(224, 137, 23);
+            box-shadow: 8px 5px 25px rgba(24, 24, 24, 0.574);
+            border-radius: 3rem;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.2s linear;
+            cursor: pointer;
+
+        }
+
+        .btn:hover {
+
+            box-shadow: 8px 5px 25px rgba(24, 24, 24, 0.827);
+            background-color: rgb(170, 98, 3);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .loader {
+            height: 60px;
+            aspect-ratio: 1;
+            position: relative;
+            border: 3px solid #0000;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+        .loader:before {
+            content: "";
+            position: absolute;
+            inset: auto 35% 0;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #CF4647;
+            animation: l6-0 .5s cubic-bezier(0, 800, 1, 800) infinite;
+        }
+
+        .loader:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            outline: 3px solid #524656;
+            animation: l6-1 .5s linear infinite;
+        }
+
+        .error {
+            color: red;
+        }
+
+        @keyframes l6-0 {
+
+            0%,
+            2% {
+                bottom: 0%
+            }
+
+            98%,
+            to {
+                bottom: .1%
+            }
+        }
+
+        @keyframes l6-1 {
+
+            0%,
+            30% {
+                rotate: 0deg
+            }
+
+            70%,
+            to {
+                rotate: 90deg
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div class="container">
+
+            <h1 class="header">Joke Of The Day</h1>
+
+
+            <div class="loader hide"></div>
+
+            <div class="fact-holder">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam expedita, nesciunt
+                numquam id asperiores optio temporibus consequuntur dolores soluta, perferendis officiis. Excepturi
+                quidem
+                aliquam labore fuga possimus accusamus ab nihil?</div>
+
+            <button class="btn" id="factBtn">New Joke</button>
+
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+
+
+        // async function apiCall() {
+
+        //     const headers = {
+        //         "accept": "application/json"
+        //     }
+        //     let apiResponse = await axios.get("https://icanhazdadjoke.com/", { headers })
+
+        //     // console.log(apiResponse);
+        //     // console.log(apiResponse.data);
+        //     console.log(apiResponse.data.joke);
+        // }
+
+        let factDisplay = document.querySelector(".fact-holder");
+
+        let generateFactBtn = document.getElementById("factBtn");
+        let loader = document.querySelector(".loader");
+
+
+        async function getJoke() {
+            try {
+
+                loader.classList.remove("hide");
+                factDisplay.classList.add("hide");
+                factDisplay.classList.remove("error");
+
+                let apiResponse = await axios.get("https://icanhazdadjoke.com/", {
+                    headers: {
+                        "accept": "application/json",
+                    }
+                });
+
+                console.log(apiResponse);
+                factDisplay.textContent = apiResponse.data.joke;
+                loader.classList.add("hide");
+                factDisplay.classList.remove("hide");
+            } catch (error) {
+                factDisplay.textContent = error;
+                loader.classList.add("hide");
+                factDisplay.classList.remove("hide");
+                factDisplay.classList.add("error");
+
+            }
+
+        }
+
+        getJoke();
+        generateFactBtn.addEventListener("click", () => {
+            getJoke();
+        })
+    </script>
+
+</body>
+
+</html>
