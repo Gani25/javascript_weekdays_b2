@@ -70,26 +70,87 @@ window.__WEATHER_UI = {
 
 async function getFlag(country) {
   const flagURL = `https://restcountries.com/v3.1/name/${country}?fullText=true`;
+  let data;
+  let flagImage;
+  try {
+    data = await axios.get(flagURL);
 
-  let data = await axios.get(flagURL);
-  return data.data[0].flags.png;
+    console.log(data);
+    flagImage = data.data[0].flags.png;
+  } catch (error) {
+    console.log("ERROR = ", error);
+  }
+  return flagImage || "fallback.png";
 }
 
 const apiKey = "bcd772c692ee42b1adb101143251009";
 let baseURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}`;
 const searchCity = "Turkey";
 const forecastDays = 3;
+
+// Getting HTML DOM Elements
+const loader = document.getElementById("loader");
+const emptyState = document.getElementById("emptyState");
+const dataContainer = document.querySelector("#dataContainer");
+
 async function getWeatherUpdate(searchQuery, forecastDays) {
-  let apiURL = `${baseURL}&q=${searchQuery}&days=${forecastDays}`;
+  loader.style.display = "block";
+  dataContainer.innerHTML = "";
+  emptyState.style.display = "none";
+  try {
+    let apiURL = `${baseURL}&q=${searchQuery}&days=${forecastDays}`;
 
-  let apiResponse = await axios.get(apiURL);
-  let apiData = apiResponse.data;
+    let apiResponse = await axios.get(apiURL);
+    let apiData = apiResponse.data;
 
-  let flagURL = await getFlag(apiData.location.country);
+    let flagURL = await getFlag(apiData.location.country);
 
-  console.log(flagURL);
+    console.log(flagURL);
 
-  console.log(apiData);
+    let date = new Date(apiData.location.localtime_epoch * 1000);
+    console.log(apiData);
+
+    const dateFormat = date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    let weatherInfo = `
+  <div class="weather-top">
+    <img class="flag" src="${flagURL}" alt="Country Flag Image">
+    <div>
+      <div style="font-weight:bold;">${apiData.location.name}, ${apiData.location.region}, ${apiData.location.country}</div>
+      <div class="small">${dateFormat} • ${apiData.current.condition.text}</div>
+    </div>
+  </div>
+  <p class="temp">${apiData.current.temp_c} ℃</p>
+  <div class="small">Wind: ${apiData.current.wind_mph} m/h • Humidity: ${apiData.current.humidity}% • Cloud: ${apiData.current.cloud}%</div>
+  <div class="info">
+    <div class="pill">Feels: ${apiData.current.feelslike_c} ℃</div>
+    <div class="pill">Pressure: ${apiData.current.pressure_mb} mb</div>
+    <div class="pill">UV: ${apiData.current.uv}</div>
+  </div>
+  <h3 style="margin-top:12px;margin-bottom:8px">Forecast</h3>
+  `;
+
+    dataContainer.innerHTML = weatherInfo;
+
+    loader.style.display = "none";
+  } catch (error) {
+    // Show ERROR UI
+    loader.style.display = "none";
+    dataContainer.innerHTML = `
+    <div style="text-align:center; padding:16px">
+      <img src="error.png" alt="Error Image">
+      <p style="color:red; font-weight:600;">Error Fetching Data! Try Again</p>
+    </div>
+    `;
+  }
 }
 
 getWeatherUpdate(searchCity, forecastDays);

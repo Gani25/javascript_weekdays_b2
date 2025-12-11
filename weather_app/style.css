@@ -101,11 +101,6 @@ option {
   color: var(--text);
 }
 
-.row {
-  display: flex;
-  gap: 10px;
-}
-
 .controls {
   display: flex;
   gap: 10px;
@@ -212,6 +207,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .icon {
@@ -269,4 +265,13 @@ button {
   .theme-toggle {
     margin-left: 0;
   }
+}
+
+.empty-state {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-weight: 600;
 }

@@ -29,60 +29,42 @@
                 </div>
             </header>
 
-            <div>
+            <form id="weatherForm">
                 <div style="margin-bottom:12px">
                     <label for="city">City name</label>
-                    <input id="city" type="text" placeholder="e.g. Mumbai or Paris,FR">
+                    <input id="city" name="city" type="text" placeholder="e.g. Mumbai or Paris,FR">
                     <div id="cityError" class="error">City name is required</div>
                 </div>
 
                 <div style="margin-bottom:12px">
                     <label for="days">Forecast days</label>
-                    <select id="days">
+                    <select id="days" name="days">
                         <option value="">Select days</option>
                     </select>
                     <div id="daysError" class="error">Please select days</div>
                 </div>
 
                 <div class="controls">
-                    <button id="getWeatherBtn" class="btn-primary">Get Weather</button>
-                    <button id="currentLocationBtn" class="btn-ghost">Current Location</button>
+                    <button id="getWeatherBtn" class="btn-primary" type="submit">Get Weather</button>
+                    <button id="currentLocationBtn" class="btn-ghost" type="button">Current Location</button>
                 </div>
 
                 <div style="margin-top:12px" class="small">Tip: type <code>city,country</code> to disambiguate (e.g.
-                    <code>London,GB</code>).
+                    <code>India,Delhi</code>).
                 </div>
-            </div>
+            </form>
         </aside>
 
-        <main class="card">
-            <div class="weather-top">
-                <img class="flag" src="fallback.png" alt="flag">
-                <div>
-                    <div style="font-weight:800">City, Region, Country</div>
-                    <div class="condition small">Local time • Condition</div>
-                </div>
+        <main id="weather" class="card">
+            <div id="rightContent">
+                <div class="empty-state" id="emptyState">Search for a city to see weather</div>
+                <div id="loader" class="loader" style="display:none;margin-top:16px"></div>
+                <div id="dataContainer"></div>
             </div>
-
-            <p class="temp">-- ℃</p>
-            <div class="condition small">Current • Wind • Humidity • Cloud</div>
-
-            <div class="info">
-                <div class="pill">Wind: --</div>
-                <div class="pill">Humidity: --</div>
-                <div class="pill">Cloud: --</div>
-            </div>
-
-            <h3 style="margin-top:12px;margin-bottom:8px">Forecast</h3>
-            <div class="forecast" id="forecastContainer">
-
-            </div>
-
-            <div id="loader" class="loader" style="margin-top:14px;display:none"></div>
         </main>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 
