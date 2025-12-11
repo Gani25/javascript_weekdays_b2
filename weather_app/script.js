@@ -136,9 +136,26 @@ async function getWeatherUpdate(searchQuery, forecastDays) {
     <div class="pill">UV: ${apiData.current.uv}</div>
   </div>
   <h3 style="margin-top:12px;margin-bottom:8px">Forecast</h3>
+  <div class="forecast" id="forecastContainer">
+  </div>
   `;
 
     dataContainer.innerHTML = weatherInfo;
+
+    // for forecast display
+    let forecastContainer = document.querySelector("#forecastContainer");
+    apiData.forecast.forecastday.forEach((day) => {
+      let item = document.createElement("div");
+      item.className = "item";
+      item.innerHTML = `
+      <div class="date">${day.date}</div>
+      <div >${day.day.condition.text}</div>
+      <div >Max: ${day.day.maxtemp_c} ℃, Min: ${day.day.mintemp_c} ℃</div>
+      <img alt="Weather Icon" src="https:${day.day.condition.icon}">
+      `;
+
+      forecastContainer.appendChild(item);
+    });
 
     loader.style.display = "none";
   } catch (error) {
