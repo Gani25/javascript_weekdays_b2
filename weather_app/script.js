@@ -93,6 +93,34 @@ const loader = document.getElementById("loader");
 const emptyState = document.getElementById("emptyState");
 const dataContainer = document.querySelector("#dataContainer");
 
+// reading form Errors
+const cityError = document.getElementById("cityError");
+const daysError = document.getElementById("daysError");
+
+// reading form data
+const cityData = document.querySelector("#city");
+const daysData = document.querySelector("#days");
+
+// reading form to target submit event
+const weatherForm = document.querySelector("#weatherForm");
+
+function isCityValid(cityValue) {
+  if (!cityValue) {
+    cityError.style.display = "block";
+    return false;
+  }
+  cityError.style.display = "none";
+  return true;
+}
+function isDaysValid(daysValue) {
+  if (!daysValue) {
+    daysError.style.display = "block";
+    return false;
+  }
+  daysError.style.display = "none";
+  return true;
+}
+
 async function getWeatherUpdate(searchQuery, forecastDays) {
   loader.style.display = "block";
   dataContainer.innerHTML = "";
@@ -170,4 +198,17 @@ async function getWeatherUpdate(searchQuery, forecastDays) {
   }
 }
 
-getWeatherUpdate(searchCity, forecastDays);
+// submit event target
+weatherForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let cityValid = isCityValid(cityData.value.trim());
+  let daysValid = isDaysValid(daysData.value.trim());
+
+  if (cityValid && daysValid) {
+    getWeatherUpdate(cityData.value.trim(), daysData.value.trim());
+  } else {
+    emptyState.style.display = "flex";
+    // dataContainer.style.display = "none";
+    dataContainer.innerHTML = "";
+  }
+});
