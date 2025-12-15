@@ -85,8 +85,8 @@ async function getFlag(country) {
 
 const apiKey = "bcd772c692ee42b1adb101143251009";
 let baseURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}`;
-const searchCity = "Turkey";
-const forecastDays = 3;
+const searchCity = localStorage.getItem("userCity");
+const forecastDays = localStorage.getItem("userForecast");
 
 // Getting HTML DOM Elements
 const loader = document.getElementById("loader");
@@ -104,6 +104,12 @@ const daysData = document.querySelector("#days");
 // reading form to target submit event
 const weatherForm = document.querySelector("#weatherForm");
 
+// current Location
+const currentLocationButton = document.getElementById("currentLocationBtn");
+
+if (searchCity && forecastDays) {
+  getWeatherUpdate(searchCity, forecastDays);
+}
 function isCityValid(cityValue) {
   if (!cityValue) {
     cityError.style.display = "block";
@@ -122,6 +128,8 @@ function isDaysValid(daysValue) {
 }
 
 async function getWeatherUpdate(searchQuery, forecastDays) {
+  localStorage.setItem("userCity", searchQuery);
+  localStorage.setItem("userForecast", forecastDays);
   loader.style.display = "block";
   dataContainer.innerHTML = "";
   emptyState.style.display = "none";
@@ -148,6 +156,10 @@ async function getWeatherUpdate(searchQuery, forecastDays) {
       hour12: true,
     });
 
+    cityData.value =
+      cityData.value.trim() === "" ? apiData.location.name : searchQuery;
+
+    daysData.value = forecastDays;
     let weatherInfo = `
   <div class="weather-top">
     <img class="flag" src="${flagURL}" alt="Country Flag Image">
@@ -210,5 +222,36 @@ weatherForm.addEventListener("submit", (event) => {
     emptyState.style.display = "flex";
     // dataContainer.style.display = "none";
     dataContainer.innerHTML = "";
+  }
+});
+
+currentLocationButton.addEventListener("click", () => {
+  let daysValid = isDaysValid(daysData.value.trim());
+
+  if (!daysValid) {
+    emptyState.style.display = "flex";
+    dataContainer.innerHTML = "";
+    return;
+  } else {
+    // current location -> client
+    isCityValid("No Check");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // console.log(position);
+          // console.log(position.coords.latitude);
+          // console.log(position.coords.longitude);
+          getWeatherUpdate(
+            `${position.coords.latitude},${position.coords.longitude}`,
+            daysData.value.trim()
+          );
+        },
+        () => {
+          alert("Please allow location");
+        }
+      );
+    } else {
+      alert("Location is not supported");
+    }
   }
 });
