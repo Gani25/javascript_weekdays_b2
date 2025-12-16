@@ -1,0 +1,97 @@
+/* Preset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+}
+
+/* html {
+  font-size: 10px;
+} */
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.625)),
+    url(./images/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* display: grid;
+  place-items: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-info {
+  position: absolute;
+  top: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.5rem 3rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.game-container {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 20rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  padding: 2rem;
+  aspect-ratio: 1/1;
+}
+
+.box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* pointer-events: all; */
+  cursor: pointer;
+}
+
+.box1,
+.box2,
+.box4,
+.box5 {
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.box7,
+.box8 {
+  border-right: 2px solid #ffffff;
+}
+
+.box3,
+.box6 {
+  border-bottom: 2px solid #ffffff;
+}
+
+/* BTN */
+
+.btn {
+  position: absolute;
+  bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.5rem 3rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  display: none;
+}
+
+.btn.active {
+  display: flex;
+}
+
+.win {
+  background-color: rgba(0, 255, 0, 0.3);
+}
