@@ -156,8 +156,24 @@ async function getWeatherUpdate(searchQuery, forecastDays) {
       hour12: true,
     });
 
-    cityData.value =
-      cityData.value.trim() === "" ? apiData.location.name : searchQuery;
+    if (cityData.value.trim() === "") {
+      cityData.value = apiData.location.name;
+    } else {
+      let searchValue = searchQuery.split(",");
+      if (
+        Number.isNaN(Number(searchValue[0])) &&
+        Number.isNaN(Number(searchValue[1]))
+      ) {
+        console.log(Number(searchValue[0]));
+        console.log(Number(searchValue[1]));
+        cityData.value = searchQuery;
+      } else {
+        cityData.value = apiData.location.name;
+      }
+    }
+
+    // cityData.value =
+    //   cityData.value.trim() === "" ? apiData.location.name : searchQuery;
 
     daysData.value = forecastDays;
     let weatherInfo = `
